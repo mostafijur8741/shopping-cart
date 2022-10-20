@@ -85,7 +85,7 @@
             valueCount = document.getElementById("num").value;
             valueCount++;
             document.getElementById("num").value = valueCount;
-            if (valueCount >= 1) {
+            if (valueCount >1) {
                document.getElementById("minus").removeAttribute("disabled", "disabled")
              
             }
@@ -102,7 +102,7 @@
          valueCount = document.getElementById("num").value;
          valueCount--;
          document.getElementById("num").value = valueCount;
-         if (valueCount == 0) {
+         if (valueCount == 1) {
             document.getElementById("minus").setAttribute("disabled", "disabled");
          }
          //function call
@@ -135,7 +135,7 @@
      
          //function call
          price_Total();
-         if (valueCount == 0) {
+         if (valueCount == 1) {
             document.getElementById("cMinus").setAttribute("disabled", "disabled")
 
 
@@ -151,7 +151,7 @@
        
          //function call
         
-         if (valueCount >=1) {
+         if (valueCount >1) {
             document.getElementById("cMinus").removeAttribute("disabled","disabled")
          }
           price_Total();
