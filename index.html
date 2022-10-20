@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="num" type="text" class="form-control text-center" value="1">
+                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$<span id="price">1219</span> </h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="cMinus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="cNum" type="text" class="form-control text-center" value="1">
+                           <button id="cPlus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$<span id="cPrice">59</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="Total">1278</span> </h5>
+                        <h5>$0</h5>
+                        <h5><span id="Totals">1278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+      //+++
+      let plus = document.getElementById("plus");
+      plus.addEventListener("click", function () {
+         
+            valueCount = document.getElementById("num").value;
+            valueCount++;
+            document.getElementById("num").value = valueCount;
+            if (valueCount >= 1) {
+               document.getElementById("minus").removeAttribute("disabled", "disabled")
+             
+            }
+         
+         
+         priceTotal();
+      
+      })
+      //---
+      let minus = document.getElementById("minus")
+      document.getElementById("num").value = "1"
+      minus.addEventListener("click", function () {
+         
+         valueCount = document.getElementById("num").value;
+         valueCount--;
+         document.getElementById("num").value = valueCount;
+         if (valueCount == 0) {
+            document.getElementById("minus").setAttribute("disabled", "disabled");
+         }
+         //function call
+         priceTotal();
+      })
+      //total ipohone price
+
+     
+      var price = document.getElementById("price").innerText;
+      var newPrice = parseFloat(price)
+      var priceA=document.getElementById("cPrice").innerText;
+      var priceAn=parseFloat(priceA);
+
+      function priceTotal() {
+        
+         var Total = valueCount * newPrice;
+         document.getElementById("price").innerText = Total;
+         var newTotal= Total+priceAn;
+         document.getElementById("Total").innerText= newTotal;
+         document.getElementById("Totals").innerText= new_Total;
+         
+      }
+      ///cover--
+      let cminus = document.getElementById("cMinus")
+      document.getElementById("cNum").value = "1"
+      cminus.addEventListener("click", function () {
+         valueCount = document.getElementById("cNum").value;
+         valueCount--;
+         document.getElementById("cNum").value = valueCount;
+     
+         //function call
+         price_Total();
+         if (valueCount == 0) {
+            document.getElementById("cMinus").setAttribute("disabled", "disabled")
+
+
+         }
+         
+      })
+      ///cover++
+      let cPlus = document.getElementById("cPlus")
+      cPlus.addEventListener("click", function () {
+         valueCount = document.getElementById("cNum").value;
+         valueCount++;
+         document.getElementById("cNum").value = valueCount;
+       
+         //function call
+        
+         if (valueCount >=1) {
+            document.getElementById("cMinus").removeAttribute("disabled","disabled")
+         }
+          price_Total();
+      })
+        var cprice = document.getElementById("cPrice").innerText;
+        var new_Price = parseFloat(cprice)
+        var priceAu=document.getElementById("price").innerText;
+        var priceAnew=parseFloat(priceAu);
+      function price_Total() {
+        
+         var TotalPrice = valueCount * new_Price;
+         var new_Total= priceAnew+ TotalPrice;
+         document.getElementById("cPrice").innerText = TotalPrice;
+         document.getElementById("Total").innerText= new_Total;
+         document.getElementById("Totals").innerText= new_Total;
+       
+   
+      }
+     
+
+   </script>
+</body>
+
+</html>
